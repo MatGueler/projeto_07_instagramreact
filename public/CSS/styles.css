@@ -401,6 +401,7 @@ video{
     margin-bottom: 10px;
 }
 
+/* MOBILE MEDIO */
 @media (max-width: 935px){
 
     .sidebar{
@@ -414,6 +415,8 @@ video{
     }
 }
 
+
+/* MOBILE CELULARES */
 @media (max-width: 614px){
 
     .menu-stories{
