@@ -1,0 +1,491 @@
+/* BARRAS */
+.barra-vertical{
+    height: 20px;
+    width: 1px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: grey;
+}
+/* BARRAS */
+
+
+/* ICONES */
+.icone{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+/* ICONES */
+
+
+body{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* justify-content: center; */
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    align-items: center;
+    background-color: #f7f7f7;
+}
+
+strong{
+    font-weight: bold;
+}
+
+/* BOTOES */
+
+input[type=text], select {
+    width:180px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+.menu-topo{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid #DBDBDB;
+    background-color: white;
+    z-index: 1;
+}
+
+.menu-topo-mobile{
+    display: none;
+}
+
+.menu-base-mobile{
+    display: none;
+}
+
+.area-botoes{
+    height: 100%;
+    width: 935px;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.botao{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+/* BOTOES */
+
+
+/* AREA DOS STORIES */
+.menu-stories{
+    display: flex;
+    width: 614px;
+    overflow: hidden;
+    border: 1px solid #DBDBDB;
+    position: relative;
+    margin-bottom: 24px;
+    /* 30px para o menu-topo e 58px para a distância entre as caixas */
+    background-color: white;
+}
+
+.seta-stories{
+    height: 25px;
+    border-radius: 100%;
+    font-size: 25px;
+    position: absolute;
+    right: 20px;
+    top: 35%;
+    box-shadow: -2px 3px 10px rgb(148, 144, 144);
+    color: #c7c7c7d8;
+    background:#FFFFFF;
+}
+
+.conteudo-storie{
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: white; */
+    margin: 10px 0px 10px 15px;
+}
+
+.nome-perfil p{
+    height: 15px;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.fundo-storie{
+    height: 68px;
+    width: 68px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image:  url(/img/stories_background.jpg);
+    background-size: 70px 70px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* background-color: black; */
+}
+
+.foto-perfil-feed img{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.borda-storie img{
+    height: 30px;
+    width: 30px;
+}
+
+.foto-perfil{
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.foto-perfil-storie{
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+
+}
+
+.foto-perfil-storie img{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.foto-perfil img{
+    /* height: 50px; */
+    width: 50px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+/* AREA DOS STORIES */
+.container{
+    width: 935px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 88px;
+}
+
+.postagens{
+    width: 614px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* background-color: pink; */
+}
+
+.postagem{
+    width: 100%;
+    margin-bottom: 60px;
+    border: 1px solid #DBDBDB;
+    background-color: white;
+}
+
+.postada img {
+    width: 614px;
+    height: 614px;
+    object-fit: cover;
+}
+
+.postada{
+    width: 614px;
+    /* height: 614px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+video{
+    width: 100%;
+}
+
+.videos{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* cabecalho */
+
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.perfil img{
+    width: 45px;
+    border-radius: 100%;
+}
+
+.perfil p{
+    margin-left: 10px;
+}
+
+.perfil{
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    /* background-color: gray; */
+}
+
+.abreviacao{
+    font-weight: normal;
+    font-size: 14px;
+    color: #8E8E8E;
+    margin-top: 5px;
+}
+
+.opcoes{
+    font-size: 20px;
+    display: flex;
+    justify-content: center ;
+    margin: 10px;
+    /* background-color: gray; */
+}
+
+
+/* rodape */
+
+.rodape{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-top: 1px solid #DBDBDB;
+    /* background-color: rgb(0, 255, 21); */
+}
+
+.menu-foto{
+    width: 100%;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: gold; */
+}
+
+.curtidas{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.perfil-curtidas{
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.curtidas img{
+    width: 20px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+/* sidebar */
+
+.sidebar{
+    width: 293px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 88px;
+    left: 826px;
+
+}
+
+/* .sidebar{
+    width: 293px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+} */
+
+.sugestao{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 14px;
+    /* background-color:blue; */
+}
+
+.sugestoes-para-voce{
+    margin-left: 10px;
+    color: #8E8E8E;
+}
+.caixa-perfil{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    /* background-color: red; */
+}
+
+.perfil-sidebar p{
+    margin-left: 10px;
+}
+
+.nome-abreviacao-perfil p{
+    margin-left: 10px;
+}
+
+.perfil-sidebar{
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    /* background-color: gray; */
+}
+
+.fundo-storie-sidebar img{
+    width: 60px;
+    height: 60px;
+}
+
+.fundo-storie-sugestoes img{
+    width: 40px;
+    height: 40px;
+}
+
+.seguir{
+    font-weight: bold;
+    color: #139EF2;
+}
+
+.nome-abreviacao-perfil p{
+    margin-left: 10px;
+}
+
+.alertas{
+    font-size: 11px;
+    padding: 10px;
+    color: #C7C7C7;
+}
+
+.alertas p{
+    margin-bottom: 10px;
+}
+
+@media (max-width: 935px){
+
+    .sidebar{
+        display: none;
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 614px){
+
+    .menu-stories{
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+        border: 0px;
+        margin: 0px;
+        /* 30px para o menu-topo e 58px para a distância entre as caixas */
+        background-color: #f7f7f7;
+    }
+
+    .seta-stories{
+        display: none;
+    }
+
+    .menu-topo-mobile{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        border-bottom: 1px solid #DBDBDB;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .menu-base-mobile{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        border-bottom: 1px solid #DBDBDB;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .menu-topo{
+        display: none;
+    }
+
+    .principal{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .postagens{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .postagem{
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .postada img{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .postada{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+}
