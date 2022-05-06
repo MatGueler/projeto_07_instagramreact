@@ -1,3 +1,4 @@
+// FUNÇÃO QUE EXPORTA O TOPO
 export default function Topo() {
     return (
         <div class="menu-topo">
