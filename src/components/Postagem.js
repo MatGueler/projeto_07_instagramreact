@@ -1,4 +1,8 @@
+import Cabecalho from './Cabecalho';
+
 import React from 'react';
+
+let marcado = 0
 
 // DUNÇÃO QUE VERIFICA SE O CONTEÚDO É IMAGEM OU VIDEO
 function VerificarImagemVideo(props) {
@@ -18,59 +22,38 @@ function VerificarImagemVideo(props) {
     }
     else {
         return (
-            <img src={props.img} />
+            <img src={props.img} className={classeVazia} />
         )
     }
 }
 
-function Cabecalho(props) {
-    return (
-        <div class="cabecalho">
-            <div class="perfil">
-
-                <div class="fundo-perfil-feed">
-                    <div class="foto-perfil-feed">
-                        <img src={props.imagePerfil} />
-                    </div>
-                </div>
-
-                <p>{props.user}</p>
-            </div>
-            <div class="opcoes">
-                <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
-            </div>
-        </div>
-    )
-}
-
-const VALOR_INICIAL = 0;
+let VALOR_INICIAL = 0;
+const palavra_Inicial = "heart-outline"
+const coracaoCheio = "heart"
+const classeVazia = 'normal md hydrated'
+const classeCurtida = 'curtida md hydrated'
 
 
 function Rodape(props) {
-    const palavra_Inicial = "heart-outline"
-    const coracaoCheio = "heart"
-    const classeVazia = 'normal md hydrated'
-    const classeCurtida = 'curtida md hydrated'
 
     const [contador, setContador] = React.useState(VALOR_INICIAL);
     const [valor, setValor] = React.useState(palavra_Inicial);
     const [classe, setClasse] = React.useState(classeVazia);
-    
-    function contar(){
-        if(contador===0){
-            setContador(contador + 1)
+
+    function contar() {
+        if (marcado === 0) {
+            // setContador(contador + 1)
             setValor(coracaoCheio)
             setClasse(classeCurtida)
+            marcado = 1
         }
-        else{
-            setContador(contador-1)
+        else {
+            // setContador(contador - 1)
             setValor(palavra_Inicial)
             setClasse(classeVazia)
+            marcado = 0
         }
-        
-        console.log(contador)
-        console.log(valor)
-        console.log(classe)
+
     }
 
     return (
@@ -116,6 +99,7 @@ function ConteudoPost(props) {
 }
 
 export default function Postagem() {
+
     const objetos = [
         { imagePerfil: 'https://st2.depositphotos.com/32749688/42863/i/1600/depositphotos_428634632-stock-photo-graffiti-artist-posing-front-his.jpg', user: 'leografiteiro1987', imagePost: 'https://c.pxhere.com/photos/39/7b/panorama_copyright_see_no_feel_archive_free_commercial-338422.jpg!d', curtidas: '122.000', mp4: '', ogg: '' },
 
