@@ -51,7 +51,6 @@ export default function Storie() {
                     <ion-icon name="chevron-forward-circle-outline"></ion-icon>
                 </div>
 
-
                 {objetos.map(function (elemento) {
                     return (<PessoaStorie imagem={elemento.imagem} name={elemento.name} />)
                 })}

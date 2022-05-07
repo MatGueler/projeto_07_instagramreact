@@ -1,3 +1,5 @@
+import React from 'react';
+
 // DUNÇÃO QUE VERIFICA SE O CONTEÚDO É IMAGEM OU VIDEO
 function VerificarImagemVideo(props) {
 
@@ -21,104 +23,96 @@ function VerificarImagemVideo(props) {
     }
 }
 
+function Cabecalho(props) {
+    return (
+        <div class="cabecalho">
+            <div class="perfil">
+
+                <div class="fundo-perfil-feed">
+                    <div class="foto-perfil-feed">
+                        <img src={props.imagePerfil} />
+                    </div>
+                </div>
+
+                <p>{props.user}</p>
+            </div>
+            <div class="opcoes">
+                <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
+            </div>
+        </div>
+    )
+}
+
+const VALOR_INICIAL = 0;
+
+
+function Rodape(props) {
+    const palavra_Inicial = "heart-outline"
+    const coracaoCheio = "heart"
+    const classeVazia = 'normal md hydrated'
+    const classeCurtida = 'curtida md hydrated'
+
+    const [contador, setContador] = React.useState(VALOR_INICIAL);
+    const [valor, setValor] = React.useState(palavra_Inicial);
+    const [classe, setClasse] = React.useState(classeVazia);
+    
+    function contar(){
+        if(contador===0){
+            setContador(contador + 1)
+            setValor(coracaoCheio)
+            setClasse(classeCurtida)
+        }
+        else{
+            setContador(contador-1)
+            setValor(palavra_Inicial)
+            setClasse(classeVazia)
+        }
+        
+        console.log(contador)
+        console.log(valor)
+        console.log(classe)
+    }
+
+    return (
+        <div class="rodape">
+            <div class="menu-foto">
+                <div class="icone-curtir-comentar-enviar">
+                    <ion-icon class={classe} name={valor} onClick={contar}></ion-icon>
+                    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                    <ion-icon name="paper-plane-outline"></ion-icon>
+                </div>
+                <div class="icone salvar"><ion-icon name="bookmark-outline"></ion-icon></div>
+
+            </div>
+            <div class="curtidas">
+
+                <div class="perfil-curtidas">
+                    <img src="https://raichu-uploads.s3.amazonaws.com/logo_null_y6Bzzu.png" />
+                </div>
+
+                <p>Curtido por <strong>respondeai</strong> e <strong>{props.curtidas} pessoas</strong>. {contador}</p>
+
+            </div>
+        </div>
+    )
+}
 // FUNÇÕES QUE MONTA A POSTAGEM
 function ConteudoPost(props) {
 
     return (
 
         <div class="postagem">
-            <div class="cabecalho">
-                <div class="perfil">
 
-                    <div class="fundo-perfil-feed">
-                        <div class="foto-perfil-feed">
-                            <img src={props.imagePerfil} />
-                        </div>
-                    </div>
-
-                    <p>{props.user}</p>
-                </div>
-                <div class="opcoes">
-                    <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
-                </div>
-            </div>
+            <Cabecalho imagePerfil={props.imagePerfil} user={props.user} />
 
             <div class="postada">
                 <VerificarImagemVideo img={props.imagePost} mp4={props.mp4} ogg={props.ogg} />
             </div>
 
-            <div class="rodape">
-                <div class="menu-foto">
-                    <div class="icone-curtir-comentar-enviar">
-                        <ion-icon name="heart-outline"></ion-icon>
-                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-                        <ion-icon name="paper-plane-outline"></ion-icon>
-                    </div>
+            <Rodape curtidas={props.curtidas} />
 
-                    <div class="icone salvar"><ion-icon name="bookmark-outline"></ion-icon></div>
-
-                </div>
-                <div class="curtidas">
-
-                    <div class="perfil-curtidas">
-                        <img src="https://raichu-uploads.s3.amazonaws.com/logo_null_y6Bzzu.png" />
-                    </div>
-
-                    <p>Curtido por <strong>respondeai</strong> e <strong>{props.curtidas} pessoas</strong>.</p>
-
-                </div>
-            </div>
         </div>
     )
-
-
-    //     return (
-
-    //         <div class="postagem">
-    //             <div class="cabecalho">
-    //                 <div class="perfil">
-
-    //                     <div class="fundo-perfil-feed">
-    //                         <div class="foto-perfil-feed">
-    //                             <img src={props.imagePerfil} />
-    //                         </div>
-    //                     </div>
-
-    //                     <p>{props.user}</p>
-    //                 </div>
-    //                 <div class="opcoes">
-    //                     <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
-    //                 </div>
-    //             </div>
-
-    //             <div class="postada">
-    //                 <img src={props.imagePost} />
-    //             </div>
-
-    //             <div class="rodape">
-    //                 <div class="menu-foto">
-    //                     <div class="icone-curtir-comentar-enviar">
-    //                         <ion-icon name="heart-outline"></ion-icon>
-    //                         <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-    //                         <ion-icon name="paper-plane-outline"></ion-icon>
-    //                     </div>
-
-    //                     <div class="icone salvar"><ion-icon name="bookmark-outline"></ion-icon></div>
-
-    //                 </div>
-    //                 <div class="curtidas">
-
-    //                     <div class="perfil-curtidas">
-    //                         <img src="https://raichu-uploads.s3.amazonaws.com/logo_null_y6Bzzu.png" />
-    //                     </div>
-
-    //                     <p>Curtido por <strong>respondeai</strong> e <strong>{props.curtidas} pessoas</strong>.</p>
-
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     )
-
 }
 
 export default function Postagem() {
