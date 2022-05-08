@@ -1,12 +1,14 @@
+// NAO ESTA FUNCIONANDO
+
+
+let VALOR_INICIAL = 0;
+const palavra_Inicial = "heart-outline"
+const coracaoCheio = "heart"
+const classeVazia = 'normal md hydrated'
+const classeCurtida = 'curtida md hydrated'
+let marcado = 0
 
 export default function Rodape(props) {
-
-    let VALOR_INICIAL = 0;
-    const palavra_Inicial = "heart-outline"
-    const coracaoCheio = "heart"
-    const classeVazia = 'normal md hydrated'
-    const classeCurtida = 'curtida md hydrated'
-    let marcado = 0
 
     const [contador, setContador] = React.useState(VALOR_INICIAL);
     const [valor, setValor] = React.useState(palavra_Inicial);

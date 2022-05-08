@@ -1,8 +1,8 @@
 import Cabecalho from './Cabecalho';
 
-import React from 'react';
+// import Rodape from './Rodape';
 
-let marcado = 0
+import React from 'react';
 
 // DUNÇÃO QUE VERIFICA SE O CONTEÚDO É IMAGEM OU VIDEO
 function VerificarImagemVideo(props) {
@@ -32,6 +32,7 @@ const palavra_Inicial = "heart-outline"
 const coracaoCheio = "heart"
 const classeVazia = 'normal md hydrated'
 const classeCurtida = 'curtida md hydrated'
+let marcado = 0;
 
 
 function Rodape(props) {
@@ -40,15 +41,15 @@ function Rodape(props) {
     const [valor, setValor] = React.useState(palavra_Inicial);
     const [classe, setClasse] = React.useState(classeVazia);
 
-    function contar() {
-        if (marcado === 0) {
-            // setContador(contador + 1)
+    function contar(tipo) {
+        if (contador === 0 || tipo === 'post') {
+            setContador(contador + 1)
             setValor(coracaoCheio)
             setClasse(classeCurtida)
             marcado = 1
         }
         else {
-            // setContador(contador - 1)
+            setContador(contador - 1)
             setValor(palavra_Inicial)
             setClasse(classeVazia)
             marcado = 0
@@ -56,29 +57,61 @@ function Rodape(props) {
 
     }
 
+    function VerificarImagemVideo(props) {
+
+        if (props.img === '') {
+            return (
+                <div class="videos">
+    
+                    <video muted autoplay="autoplay" onClick={() => contar('post')}>
+                        <source src={props.mp4} type="video/mp4" />
+                        <source src={props.ogg} type="video/ogv" />
+                        Seu navegador não suporta vídeos.
+                    </video>
+    
+                </div>
+            )
+        }
+        else {
+            return (
+                <img src={props.img} className={classeVazia} onClick={() => contar('post')}/>
+            )
+        }
+    }
+    
+
     return (
-        <div class="rodape">
-            <div class="menu-foto">
-                <div class="icone-curtir-comentar-enviar">
-                    <ion-icon class={classe} name={valor} onClick={contar}></ion-icon>
-                    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-                    <ion-icon name="paper-plane-outline"></ion-icon>
-                </div>
-                <div class="icone salvar"><ion-icon name="bookmark-outline"></ion-icon></div>
 
+        <div>
+            <div class="postada">
+                <VerificarImagemVideo img={props.img} mp4={props.mp4} ogg={props.ogg} />
             </div>
-            <div class="curtidas">
+            <div class="rodape">
+                <div class="menu-foto">
+                    <div class="icone-curtir-comentar-enviar">
+                        <ion-icon class={classe} name={valor} onClick={() => contar('coracao')}></ion-icon>
+                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                        <ion-icon name="paper-plane-outline"></ion-icon>
+                    </div>
+                    <div class="icone salvar"><ion-icon name="bookmark-outline"></ion-icon></div>
 
-                <div class="perfil-curtidas">
-                    <img src="https://raichu-uploads.s3.amazonaws.com/logo_null_y6Bzzu.png" />
                 </div>
+                <div class="curtidas">
 
-                <p>Curtido por <strong>respondeai</strong> e <strong>{props.curtidas} pessoas</strong>. {contador}</p>
+                    <div class="perfil-curtidas">
+                        <img src="https://raichu-uploads.s3.amazonaws.com/logo_null_y6Bzzu.png" />
+                    </div>
 
+                    <p>Curtido por <strong>respondeai</strong> e <strong>{props.curtidas} pessoas</strong>.</p>
+
+                </div>
             </div>
         </div>
     )
 }
+
+
+
 // FUNÇÕES QUE MONTA A POSTAGEM
 function ConteudoPost(props) {
 
@@ -88,11 +121,7 @@ function ConteudoPost(props) {
 
             <Cabecalho imagePerfil={props.imagePerfil} user={props.user} />
 
-            <div class="postada">
-                <VerificarImagemVideo img={props.imagePost} mp4={props.mp4} ogg={props.ogg} />
-            </div>
-
-            <Rodape curtidas={props.curtidas} />
+            <Rodape img={props.imagePost} mp4={props.mp4} ogg={props.ogg} curtidas={props.curtidas} />
 
         </div>
     )
