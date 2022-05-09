@@ -1,62 +1,33 @@
 import Cabecalho from './Cabecalho';
 
-// import Rodape from './Rodape';
-
 import React from 'react';
 
-// DUNÇÃO QUE VERIFICA SE O CONTEÚDO É IMAGEM OU VIDEO
-function VerificarImagemVideo(props) {
-
-    if (props.img === '') {
-        return (
-            <div class="videos">
-
-                <video muted controls="controls" autoplay="autoplay">
-                    <source src={props.mp4} type="video/mp4" />
-                    <source src={props.ogg} type="video/ogv" />
-                    Seu navegador não suporta vídeos.
-                </video>
-
-            </div>
-        )
-    }
-    else {
-        return (
-            <img src={props.img} className={classeVazia} />
-        )
-    }
-}
-
-let VALOR_INICIAL = 0;
-const palavra_Inicial = "heart-outline"
-const coracaoCheio = "heart"
-const classeVazia = 'normal md hydrated'
-const classeCurtida = 'curtida md hydrated'
-let marcado = 0;
 
 
 function Rodape(props) {
 
-    const [contador, setContador] = React.useState(VALOR_INICIAL);
-    const [valor, setValor] = React.useState(palavra_Inicial);
-    const [classe, setClasse] = React.useState(classeVazia);
+    const [contador, setContador] = React.useState(0);
+    const [valor, setValor] = React.useState('heart-outline');
+    const [classe, setClasse] = React.useState('normal md hydrated');
+    const [numeroCurtidas, setNumeroCurtidas] = React.useState(props.curtidas);
 
     function contar(tipo) {
         if (contador === 0 || tipo === 'post') {
             setContador(contador + 1)
-            setValor(coracaoCheio)
-            setClasse(classeCurtida)
-            marcado = 1
+            setValor('heart')
+            setClasse('curtida md hydrated')
+            setNumeroCurtidas(numeroCurtidas+1)
         }
         else {
             setContador(contador - 1)
-            setValor(palavra_Inicial)
-            setClasse(classeVazia)
-            marcado = 0
+            setValor('heart-outline')
+            setClasse('normal md hydrated')
+            setNumeroCurtidas(numeroCurtidas-1)
         }
 
     }
 
+    // DUNÇÃO QUE VERIFICA SE O CONTEÚDO É IMAGEM OU VIDEOS
     function VerificarImagemVideo(props) {
 
         if (props.img === '') {
@@ -74,7 +45,7 @@ function Rodape(props) {
         }
         else {
             return (
-                <img src={props.img} className={classeVazia} onClick={() => contar('post')}/>
+                <img src={props.img} className={'normal md hydrated'} onClick={() => contar('post')}/>
             )
         }
     }
@@ -102,7 +73,7 @@ function Rodape(props) {
                         <img src="https://raichu-uploads.s3.amazonaws.com/logo_null_y6Bzzu.png" />
                     </div>
 
-                    <p>Curtido por <strong>respondeai</strong> e <strong>{props.curtidas} pessoas</strong>.</p>
+                    <p>Curtido por <strong>respondeai</strong> e <strong>{numeroCurtidas} pessoas</strong>.</p>
 
                 </div>
             </div>
@@ -121,7 +92,7 @@ function ConteudoPost(props) {
 
             <Cabecalho imagePerfil={props.imagePerfil} user={props.user} />
 
-            <Rodape img={props.imagePost} mp4={props.mp4} ogg={props.ogg} curtidas={props.curtidas} />
+            <Rodape img={props.imagePost} mp4={props.mp4} ogg={props.ogg} curtidas={Number(props.curtidas)} />
 
         </div>
     )
@@ -130,17 +101,17 @@ function ConteudoPost(props) {
 export default function Postagem() {
 
     const objetos = [
-        { imagePerfil: 'https://st2.depositphotos.com/32749688/42863/i/1600/depositphotos_428634632-stock-photo-graffiti-artist-posing-front-his.jpg', user: 'leografiteiro1987', imagePost: 'https://c.pxhere.com/photos/39/7b/panorama_copyright_see_no_feel_archive_free_commercial-338422.jpg!d', curtidas: '122.000', mp4: '', ogg: '' },
+        { imagePerfil: 'https://st2.depositphotos.com/32749688/42863/i/1600/depositphotos_428634632-stock-photo-graffiti-artist-posing-front-his.jpg', user: 'leografiteiro1987', imagePost: 'https://c.pxhere.com/photos/39/7b/panorama_copyright_see_no_feel_archive_free_commercial-338422.jpg!d', curtidas: '122', mp4: '', ogg: '' },
 
-        { imagePerfil: 'https://blog.unis.edu.br/hubfs/como-esta-o-mercado-para-um-analista-e-desenvolvedor-de-sistemas.png', user: 'luke', imagePost: 'https://c.pxhere.com/photos/6e/87/aerial_beverage_coffee_computer_contemporary_cup_desk_device-1523041.jpg!d', curtidas: '270.564', mp4: '', ogg: '' },
+        { imagePerfil: 'https://blog.unis.edu.br/hubfs/como-esta-o-mercado-para-um-analista-e-desenvolvedor-de-sistemas.png', user: 'luke', imagePost: 'https://c.pxhere.com/photos/6e/87/aerial_beverage_coffee_computer_contemporary_cup_desk_device-1523041.jpg!d', curtidas: '27', mp4: '', ogg: '' },
 
-        { imagePerfil: 'https://meunegocio.uol.com.br/blog/wp-content/uploads/2020/04/profissao-fotografo-tudo-o-que-voce-precisa-saber-para-ser-fotografo-profissional.jpg', user: 'jao.fotografias', imagePost: 'https://c.pxhere.com/photos/bd/d6/canon_flash_foliage_heart_instagram_leaf_love_photography-1032519.jpg!d', curtidas: '9.000', mp4: '', ogg: '' },
+        { imagePerfil: 'https://meunegocio.uol.com.br/blog/wp-content/uploads/2020/04/profissao-fotografo-tudo-o-que-voce-precisa-saber-para-ser-fotografo-profissional.jpg', user: 'jao.fotografias', imagePost: 'https://c.pxhere.com/photos/bd/d6/canon_flash_foliage_heart_instagram_leaf_love_photography-1032519.jpg!d', curtidas: '9', mp4: '', ogg: '' },
 
-        { imagePerfil: 'https://www.estilosugar.com/wp-content/uploads/2018/05/viagens-estilosugar.jpg', user: 'world.travels', imagePost: 'https://www.eurodicas.com.br/wp-content/uploads/2018/11/tudo-sobre-a-franca.jpg', curtidas: '985.500', mp4: '', ogg: '' },
+        { imagePerfil: 'https://www.estilosugar.com/wp-content/uploads/2018/05/viagens-estilosugar.jpg', user: 'world.travels', imagePost: 'https://www.eurodicas.com.br/wp-content/uploads/2018/11/tudo-sobre-a-franca.jpg', curtidas: '985', mp4: '', ogg: '' },
 
-        { imagePerfil: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%2C_2020%E2%80%93present%29.svg/1200px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%2C_2020%E2%80%93present%29.svg.png', user: 'iloveparis', imagePost: 'https://i0.wp.com/www.eurodicas.com.br/wp-content/uploads/2021/10/viajar-para-franca.jpg?fit=750%2C500&ssl=1', curtidas: '650.450', mp4: '', ogg: '' },
+        { imagePerfil: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%2C_2020%E2%80%93present%29.svg/1200px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%2C_2020%E2%80%93present%29.svg.png', user: 'iloveparis', imagePost: 'https://i0.wp.com/www.eurodicas.com.br/wp-content/uploads/2021/10/viajar-para-franca.jpg?fit=750%2C500&ssl=1', curtidas: '650', mp4: '', ogg: '' },
 
-        { imagePerfil: 'https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/11/114/114306/animal_logo_preview3-o.jpg?1400525576', user: 'nature', imagePost: '', curtidas: '2.600.000', mp4: './video/video.mp4', ogg: './video/video.ogv' }
+        { imagePerfil: 'https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/11/114/114306/animal_logo_preview3-o.jpg?1400525576', user: 'nature', imagePost: '', curtidas: '265', mp4: './video/video.mp4', ogg: './video/video.ogv' }
     ]
     return (
         <div class="principal">
